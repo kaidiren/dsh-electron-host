@@ -1,0 +1,12 @@
+# 构建产物（247M，且含带个人信息的对照截图）
+Dist/
+
+# 构建缓存（Electron 官方二进制解包 + 编译中间产物）
+Build/
+
+# 系统与依赖
+.DS_Store
+node_modules/
+
+# 日志
+*.log

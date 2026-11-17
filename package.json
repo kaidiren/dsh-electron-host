@@ -1,0 +1,7 @@
+{
+  "name": "dsh-electron-host",
+  "version": "0.1.0",
+  "description": "DSH Web GUI 的 Electron 宿主（Chromium 渲染内核，服务用本机 Node）",
+  "main": "src/main.js",
+  "private": true
+}
