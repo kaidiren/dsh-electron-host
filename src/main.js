@@ -111,6 +111,7 @@ let lastAttempted = null;
 let readyLogged = false;
 let restartingUi = false;
 let zoomLogged = false;
+let titleSuppressed = false;
 
 // ---------------- 窗口状态 ----------------
 
@@ -508,7 +509,7 @@ function createWindow() {
   win = new BrowserWindow(Object.assign({
     minWidth: 640,
     minHeight: 460,
-    title: 'DSH',
+    title: '',            // 标题栏留空，什么都不显示
     backgroundColor: '#ffffff',
     show: false,          // 等首帧渲染好再显示，避免白色空窗一闪
     webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true }
@@ -573,8 +574,14 @@ function createWindow() {
     setZoom(currentZoom(), true);                       // 兜底
     setTimeout(() => checkReady(1), 120);
   });
-  win.webContents.on('page-title-updated', (e, title) => {
-    if (title && win) win.setTitle('DSH · ' + title);
+  // 标题栏保持空白：拦掉页面标题自动写入，并显式清空一次
+  win.webContents.on('page-title-updated', (e) => {
+    e.preventDefault();
+    if (win && !win.isDestroyed()) win.setTitle('');
+    if (!titleSuppressed) {
+      titleSuppressed = true;
+      log('标题栏保持空白（已拦下页面标题写入）');
+    }
   });
 
   win.once('ready-to-show', () => {
