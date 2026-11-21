@@ -23,9 +23,9 @@ if [ ! -d "$SRC" ]; then
   fi
   SRC="$CACHE/unpacked/Electron.app"
 fi
-NAME="DSH Electron"
+NAME="DSH"
 APP="$ROOT/Dist/$NAME.app"
-EXE="DSHElectron"
+EXE="DSH"
 BID="com.kaidiren.dsh-electron"
 
 rm -rf "$APP"

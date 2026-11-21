@@ -11,12 +11,12 @@ DSH Web GUI 的 Electron 宿主。渲染内核从 WKWebView 换成 Chromium（El
     src/service.js        服务层：状态机、拉起、等端口、token 解析、重启、停止、残留进程接管
     src/overlay.html      启动遮罩（转圈 + 阶段 + 已用秒数）
     assets/               托盘模板图标
-    Dist/DSH Electron.app 产物（约 245M）
+    Dist/DSH.app          产物（约 245M）
 
 ## 构建与运行
 
     ./build.sh
-    "Dist/DSH Electron.app/Contents/MacOS/DSHElectron"
+    "/Applications/DSH.app/Contents/MacOS/DSH"
 
 自检档（验证用，不影响日常）：
 
