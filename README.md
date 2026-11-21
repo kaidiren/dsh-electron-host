@@ -25,6 +25,17 @@ DSH Web GUI 的 Electron 宿主。渲染内核从 WKWebView 换成 Chromium（El
     DSH_EL_SELFTEST=orphan   打印残留进程判定结果，再退出
     DSH_EL_DEBUG=1           开 CDP 口 9333（便于对照渲染 / 截图）
 
+## 更换图标
+
+`assets/AppIcon.icns` 由 `tools/mask-icon.swift` 生成（源图需自备，不入库）：
+
+    swiftc -O tools/mask-icon.swift -o /tmp/mask-icon
+    /tmp/mask-icon 源图.jpg /tmp/icon.png 44 0.28 1.05
+    # 再用 sips 生成 16/32/128/256/512 及 @2x 十档，iconutil -c icns 打包
+
+参数依次是：裁边像素、圆角系数（0.2237≈Apple 标准，0.28 更圆能切掉底角白边）、画面缩放。
+源图若是「白底 + 圆角 + 阴影」的成品图，必须先裁掉白边再遮罩，否则四角会露出白方块。
+
 ## 配置（与 Swift 壳同名同义）
 
     DSH_WEB_PORT            服务端口，默认 3080
